@@ -22,16 +22,17 @@ export async function logActivity({
     const h = await headers()
     const ipAddress = h.get('x-forwarded-for') || h.get('x-real-ip') || null
     const userAgent = h.get('user-agent') || null
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     await db.insert(activityEvents).values({
       action,
-      userId: userId as string | null,
-      teamId: teamId as string | null,
-      entity: entity as string | null,
-      entityId: entityId as string | null,
-      metadata: metadata as Record<string, unknown> | null,
+      userId: userId || null,
+      teamId: teamId || null,
+      entity: entity || null,
+      entityId: entityId || null,
+      metadata: metadata || null,
       ipAddress,
       userAgent
-    })
+    } as any)
   } catch {
     // Log errors silently
   }
