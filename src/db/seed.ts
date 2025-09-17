@@ -19,6 +19,7 @@ async function main(){ try{ console.log('🌱 Seeding database...')
   const [basicProduct] = await db.insert(products).values({ id: 'prod_basic', name: 'Basic Plan', description: 'Perfect for individuals', active: true } as any).returning()
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [proProduct] = await db.insert(products).values({ id: 'prod_pro', name: 'Pro Plan', description: 'For growing teams', active: true } as any).returning()
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   await db.insert(prices).values([
     { id: 'price_basic_monthly', productId: basicProduct.id, active: true, currency: 'usd', type: 'recurring', unitAmount: 999, interval: 'month', intervalCount: 1 } as any,
     { id: 'price_basic_yearly', productId: basicProduct.id, active: true, currency: 'usd', type: 'recurring', unitAmount: 9999, interval: 'year', intervalCount: 1 } as any,
