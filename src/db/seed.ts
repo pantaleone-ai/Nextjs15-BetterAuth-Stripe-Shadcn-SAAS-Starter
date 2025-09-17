@@ -9,10 +9,15 @@ const client = postgres(process.env.POSTGRES_URL, { prepare: false })
 const db = drizzle(client)
 async function main(){ try{ console.log('🌱 Seeding database...')
   const passwordHash = await hashPassword('admin123')
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [user] = await db.insert(users).values({ email: 'test@test.com', passwordHash, name: 'Test User', emailVerified: true } as any).returning()
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [team] = await db.insert(teams).values({ name: 'Test Team', slug: 'test-team' } as any).returning()
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   await db.insert(teamMembers).values({ userId: user.id, teamId: team.id, role: 'owner' } as any)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [basicProduct] = await db.insert(products).values({ id: 'prod_basic', name: 'Basic Plan', description: 'Perfect for individuals', active: true } as any).returning()
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [proProduct] = await db.insert(products).values({ id: 'prod_pro', name: 'Pro Plan', description: 'For growing teams', active: true } as any).returning()
   await db.insert(prices).values([
     { id: 'price_basic_monthly', productId: basicProduct.id, active: true, currency: 'usd', type: 'recurring', unitAmount: 999, interval: 'month', intervalCount: 1 } as any,
