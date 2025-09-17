@@ -1,0 +1,7 @@
+import Link from 'next/link'
+import { ThemeToggle } from '@/components/ui/theme-toggle'
+export const metadata = { title:'Legal', description:'Terms of Service and Privacy Policy' }
+export default function LegalPage(){ return (<div className='flex flex-col min-h-screen'>
+<header className='sticky top-0 z-50 glass border-b border-border/50'><div className='container mx-auto px-4 lg:px-6 h-16 flex items-center justify-between'><Link className='font-bold text-xl gradient-text' href='/'>SaaS Starter</Link><nav className='hidden md:flex items-center space-x-6 text-sm font-medium'><Link className='text-muted-foreground hover:text-foreground' href='/pricing'>Pricing</Link><Link className='text-muted-foreground hover:text-foreground' href='/blog'>Blog</Link><Link className='text-muted-foreground hover:text-foreground' href='/sign-in'>Sign In</Link><ThemeToggle /></nav><div className='md:hidden'><ThemeToggle /></div></div></header>
+<main className='flex-1 container mx-auto px-4 py-8 max-w-4xl'><div className='prose prose-gray dark:prose-invert max-w-none'><h1>Legal Information</h1><h2>Terms of Service</h2><p>These terms govern your use of our service.</p><ul><li>Acceptable use policy</li><li>User responsibilities</li><li>Service availability</li><li>Payment terms</li><li>Termination</li></ul><h2>Privacy Policy</h2><p>We respect your privacy and protect your data.</p><ul><li>Data we collect</li><li>How we use data</li><li>Data sharing</li><li>Your rights</li></ul></div></main>
+</div>) }
