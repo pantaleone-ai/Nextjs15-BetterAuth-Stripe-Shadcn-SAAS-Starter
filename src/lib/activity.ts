@@ -1,6 +1,7 @@
 import 'server-only'
 import { db } from '@/db/client'
 import { activityEvents } from '@/db/schema'
+import { InsertActivityEvent } from '@/db/schema'
 import { headers } from 'next/headers'
 
 export async function logActivity({
@@ -22,7 +23,6 @@ export async function logActivity({
     const h = await headers()
     const ipAddress = h.get('x-forwarded-for') || h.get('x-real-ip') || null
     const userAgent = h.get('user-agent') || null
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     await db.insert(activityEvents).values({
       action,
       userId: userId || null,
@@ -32,7 +32,7 @@ export async function logActivity({
       metadata: metadata || null,
       ipAddress,
       userAgent
-    } as any)
+    } as InsertActivityEvent)
   } catch {
     // Log errors silently
   }

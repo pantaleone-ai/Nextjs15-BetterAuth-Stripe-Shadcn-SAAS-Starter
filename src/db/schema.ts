@@ -23,6 +23,13 @@ export const activityEventsRelations = relations(activityEvents, ({ one }) => ({
 
 export type User = typeof users.$inferSelect; export type Team = typeof teams.$inferSelect; export type TeamMember = typeof teamMembers.$inferSelect; export type Product = typeof products.$inferSelect; export type Price = typeof prices.$inferSelect; export type Subscription = typeof subscriptions.$inferSelect; export type ActivityEvent = typeof activityEvents.$inferSelect
 
+export type InsertUser = typeof users.$inferInsert
+export type InsertTeam = typeof teams.$inferInsert
+export type InsertTeamMember = typeof teamMembers.$inferInsert
+export type InsertProduct = typeof products.$inferInsert
+export type InsertPrice = typeof prices.$inferInsert
+export type InsertActivityEvent = typeof activityEvents.$inferInsert
+
 export const signUpSchema = z.object({ email: z.string().email(), password: z.string().min(8), name: z.string().min(1) })
 export const signInSchema = z.object({ email: z.string().email(), password: z.string().min(1) })
 export const createTeamSchema = z.object({ name: z.string().min(1).max(50), slug: z.string().min(1).max(50).regex(/^[a-z0-9-]+$/) })
