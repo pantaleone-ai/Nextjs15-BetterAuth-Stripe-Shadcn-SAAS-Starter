@@ -31,7 +31,7 @@ export async function logActivity({
       metadata: metadata || null,
       ipAddress,
       userAgent
-    })
+    } as any)
   } catch {
     // Log errors silently
   }
