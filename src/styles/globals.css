@@ -28,6 +28,7 @@
 
 @layer base {
   :root {
+    --color-scheme: dark;
     --background: oklch(1 0 0);
     --foreground: oklch(0.15 0.014 248.8);
     --card: oklch(1 0 0);
@@ -77,6 +78,10 @@
   * {
     border-color: hsl(var(--border));
   }
+
+  html {
+  @apply dark;
+}
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
