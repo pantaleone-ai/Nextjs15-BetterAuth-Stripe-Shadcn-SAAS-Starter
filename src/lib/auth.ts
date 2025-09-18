@@ -10,7 +10,6 @@ import { eq, and } from 'drizzle-orm'
 const secretKey = process.env.AUTH_SECRET
 const encodedKey = new TextEncoder().encode(secretKey)
 
-type SessionPayload = { userId: string; email: string; expiresAt: Date }
 export async function hashPassword(password: string){ return bcrypt.hash(password, 10) }
 export async function verifyPassword(password: string, hash: string){ return bcrypt.compare(password, hash) }
 export async function createSession(userId: string, email: string){ const expiresAt = new Date(Date.now()+7*24*60*60*1000); const session = await new SignJWT({ userId, email, expiresAt }).setProtectedHeader({ alg:'HS256' }).setIssuedAt().setExpirationTime('7d').sign(encodedKey); const cookieStore = await cookies(); cookieStore.set('session', session, { httpOnly: true, secure: process.env.NODE_ENV==='production', expires: expiresAt, sameSite:'lax', path:'/' }) }

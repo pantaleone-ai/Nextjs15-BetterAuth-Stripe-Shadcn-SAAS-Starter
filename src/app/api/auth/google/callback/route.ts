@@ -4,6 +4,7 @@ import { db } from '@/db/client'
 import { users } from '@/db/schema'
 import { createSession } from '@/lib/auth'
 import { eq } from 'drizzle-orm'
+import type { InsertUser } from '@/db/schema'
 
 const client = new OAuth2Client(
   process.env.GOOGLE_CLIENT_ID,
@@ -51,7 +52,7 @@ export async function GET(request: NextRequest) {
         provider: 'google',
         providerId: payload.sub, // Google user ID
         avatar: payload.picture,
-      } as any)).returning()
+      } as Omit<InsertUser, 'id' | 'createdAt' | 'updatedAt'>)).returning()
       user = newUser
     } else if (user.provider !== 'google') {
       // Update existing email user with Google info
@@ -61,7 +62,7 @@ export async function GET(request: NextRequest) {
           providerId: payload.sub,
           avatar: payload.picture,
           emailVerified: true,
-        } as any))
+        }))
         .where(eq(users.id, user.id))
     }
 

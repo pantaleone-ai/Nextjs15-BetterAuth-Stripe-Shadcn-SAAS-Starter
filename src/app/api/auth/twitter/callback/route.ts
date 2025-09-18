@@ -4,6 +4,7 @@ import { db } from '@/db/client'
 import { users } from '@/db/schema'
 import { createSession } from '@/lib/auth'
 import { eq } from 'drizzle-orm'
+import type { InsertUser } from '@/db/schema'
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)
@@ -66,7 +67,7 @@ export async function GET(request: NextRequest) {
         provider: 'twitter',
         providerId: profile.id,
         avatar: profile.profile_image_url,
-      } as any)).returning()
+      } as Omit<InsertUser, 'id' | 'createdAt' | 'updatedAt'>)).returning()
       user = newUser
     } else if (user.provider !== 'twitter') {
       // Update existing email user with Twitter info
@@ -76,7 +77,7 @@ export async function GET(request: NextRequest) {
           providerId: profile.id,
           avatar: profile.profile_image_url,
           emailVerified: true,
-        } as any))
+        } as Partial<Omit<InsertUser, 'id' | 'createdAt' | 'updatedAt'>>))
         .where(eq(users.id, user.id))
     }
 
