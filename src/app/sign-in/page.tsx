@@ -44,7 +44,7 @@ export default function SignInPage() {
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl font-bold text-center">
-            Welcome back
+            Welcome back 
           </CardTitle>
           <CardDescription className="text-center">
             Enter your email and password to sign in to your account
