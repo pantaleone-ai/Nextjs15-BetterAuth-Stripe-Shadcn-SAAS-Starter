@@ -7,9 +7,8 @@ if (!process.env.DATABASE_URL) {
 }
 
 // Create postgres client
-const client = postgres(process.env.DATABASE_URL, {
-  prepare: false,
-})
+const client = postgres(process.env.DATABASE_URL)
+
 
 // Create drizzle instance
 export const db = drizzle(client, { schema })
