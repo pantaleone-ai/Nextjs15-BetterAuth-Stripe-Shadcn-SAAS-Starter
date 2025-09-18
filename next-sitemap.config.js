@@ -1,17 +1,24 @@
+/** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.BASE_URL || 'http://localhost:3000',
+  siteUrl: process.env.NEXT_PUBLIC_WEBSITE_URL || 'https://imgsquash.com',
   generateRobotsTxt: true,
-  changefreq: 'monthly',
-  priority: 0.5,
-  sitemapSize: 5000,
-  gzip: false,
-  // exclude: ['/protected-page'],
+  exclude: ['/api/*', '/admin/*', '/dashboard/*'],
+  generateIndexSitemap: false,
+  robotsTxtOptions: {
+    policies: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/api/', '/admin/', '/dashboard/'],
+      },
+    ],
+  },
   transform: async (config, path) => {
     return {
       loc: path,
       changefreq: config.changefreq,
-      priority: path === '/' ? 1.0 : config.priority,
+      priority: config.priority,
       lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
-    };
+    }
   },
-};
+}

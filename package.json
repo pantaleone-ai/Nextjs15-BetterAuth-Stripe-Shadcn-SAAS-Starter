@@ -8,12 +8,12 @@
     "start": "next start",
     "lint": "next lint",
     "check-types": "tsc --noEmit",
-    "db:seed": "tsx src/db/seed.ts",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",
     "db:push": "drizzle-kit push",
-    "postbuild": "next-sitemap"
+    "sitemap": "next-sitemap",
+    "build:prod": "next build && next-sitemap"
   },
   "dependencies": {
     "@better-auth/stripe": "^1.2.12",
