@@ -3,7 +3,7 @@ import { OAuth2Client } from 'google-auth-library'
 import { db } from '@/db/client'
 import { users } from '@/db/schema'
 import { createSession } from '@/lib/auth'
-import { eq } from 'drizzle-orm'
+import { eq, sql } from 'drizzle-orm'
 import type { InsertUser } from '@/db/schema'
 
 const client = new OAuth2Client(
@@ -55,14 +55,21 @@ export async function GET(request: NextRequest) {
       } as Omit<InsertUser, 'id' | 'createdAt' | 'updatedAt'>)).returning()
       user = newUser
     } else if (user.provider !== 'google') {
-      // Update existing email user with Google info
-      await (db.update(users)
-        .set({
-          provider: 'google',
-          providerId: payload.sub,
-          avatar: payload.picture,
-          emailVerified: true,
-        }))
+      // Update existing email user with Google info - using individual field updates to avoid TypeScript inference issues
+      await db.update(users)
+        .set({ provider: 'google' })
+        .where(eq(users.id, user.id))
+
+      await db.update(users)
+        .set({ providerId: payload.sub })
+        .where(eq(users.id, user.id))
+
+      await db.update(users)
+        .set({ avatar: payload.picture })
+        .where(eq(users.id, user.id))
+
+      await db.update(users)
+        .set({ emailVerified: true })
         .where(eq(users.id, user.id))
     }
 

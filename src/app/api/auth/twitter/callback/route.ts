@@ -70,15 +70,11 @@ export async function GET(request: NextRequest) {
       } as Omit<InsertUser, 'id' | 'createdAt' | 'updatedAt'>)).returning()
       user = newUser
     } else if (user.provider !== 'twitter') {
-      // Update existing email user with Twitter info
-      await (db.update(users)
-        .set({
-          provider: 'twitter',
-          providerId: profile.id,
-          avatar: profile.profile_image_url,
-          emailVerified: true,
-        } as Partial<Omit<InsertUser, 'id' | 'createdAt' | 'updatedAt'>>))
-        .where(eq(users.id, user.id))
+      // Update existing email user with Twitter info - using individual updates to avoid TypeScript issues
+      await db.update(users).set({ provider: 'twitter' }).where(eq(users.id, user.id))
+      await db.update(users).set({ providerId: profile.id }).where(eq(users.id, user.id))
+      await db.update(users).set({ avatar: profile.profile_image_url }).where(eq(users.id, user.id))
+      await db.update(users).set({ emailVerified: true }).where(eq(users.id, user.id))
     }
 
     // Create session using your existing JWT system
