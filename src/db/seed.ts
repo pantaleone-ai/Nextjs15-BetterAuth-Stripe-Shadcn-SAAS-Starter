@@ -1,26 +1,49 @@
-import { config } from 'dotenv'
+// Remove the dotenv import
+// import { config } from 'dotenv'
+
 import { drizzle } from 'drizzle-orm/postgres-js'
 import postgres from 'postgres'
 import { hashPassword } from '../lib/auth'
-import { users, teams, teamMembers, products, prices } from './schema'
-import { InsertUser, InsertTeam, InsertTeamMember, InsertProduct, InsertPrice } from './schema'
-config({ path: '.env' })
-if (!process.env.POSTGRES_URL) throw new Error('POSTGRES_URL environment variable is required')
-const client = postgres(process.env.POSTGRES_URL, { prepare: false })
-const db = drizzle(client)
-async function main(){ try{ console.log('🌱 Seeding database...')
-  const passwordHash = await hashPassword('admin123')
-  const [user] = await db.insert(users).values({ email: 'test@test.com', passwordHash, name: 'Test User', emailVerified: true } as InsertUser).returning()
-  const [team] = await db.insert(teams).values({ name: 'Test Team', slug: 'test-team' } as InsertTeam).returning()
-  await db.insert(teamMembers).values({ userId: user.id, teamId: team.id, role: 'owner' } as InsertTeamMember)
-  const [basicProduct] = await db.insert(products).values({ id: 'prod_basic', name: 'Basic Plan', description: 'Perfect for individuals', active: true } as InsertProduct).returning()
-  const [proProduct] = await db.insert(products).values({ id: 'prod_pro', name: 'Pro Plan', description: 'For growing teams', active: true } as InsertProduct).returning()
-  await db.insert(prices).values([
-    { id: 'price_basic_monthly', productId: basicProduct.id, active: true, currency: 'usd', type: 'recurring', unitAmount: 999, interval: 'month', intervalCount: 1 },
-    { id: 'price_basic_yearly', productId: basicProduct.id, active: true, currency: 'usd', type: 'recurring', unitAmount: 9999, interval: 'year', intervalCount: 1 },
-    { id: 'price_pro_monthly', productId: proProduct.id, active: true, currency: 'usd', type: 'recurring', unitAmount: 2999, interval: 'month', intervalCount: 1 },
-    { id: 'price_pro_yearly', productId: proProduct.id, active: true, currency: 'usd', type: 'recurring', unitAmount: 29999, interval: 'year', intervalCount: 1 },
-  ] as unknown as InsertPrice[])
-  console.log('🎉 Seeded. Login test@test.com / admin123')
-} finally { await client.end() } }
-main()
+import * as schema from '../lib/db/schema'
+
+// Next.js automatically loads .env files, so no need to call config()
+// config()
+
+if (!process.env.DATABASE_URL) {
+  throw new Error('DATABASE_URL environment variable is required')
+}
+
+const client = postgres(process.env.DATABASE_URL)
+const db = drizzle(client, { schema })
+
+async function seed() {
+  try {
+    console.log('🌱 Seeding database...')
+    
+    // Example: Create a test user
+    const hashedPassword = await hashPassword('password123')
+    
+    await db.insert(schema.users).values({
+      email: 'test@example.com',
+      name: 'Test User',
+      emailVerified: true,
+    })
+    
+    console.log('✅ Database seeded successfully!')
+  } catch (error) {
+    console.error('❌ Error seeding database:', error)
+    throw error
+  } finally {
+    await client.end()
+  }
+}
+
+// Run the seed function
+if (require.main === module) {
+  seed().catch((error) => {
+    console.error(error)
+    process.exit(1)
+  })
+}
+
+export { seed }
