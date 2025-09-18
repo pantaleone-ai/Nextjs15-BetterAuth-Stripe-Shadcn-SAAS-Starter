@@ -5,7 +5,12 @@ import { z } from 'zod'
 export const roleEnum = pgEnum('role', ['owner','member'])
 export const subscriptionStatusEnum = pgEnum('subscription_status', ['incomplete','incomplete_expired','trialing','active','past_due','canceled','unpaid','paused'])
 
-export const users = pgTable('users', { id: uuid('id').primaryKey().defaultRandom(), email: text('email').unique().notNull(), passwordHash: text('password_hash').notNull(), name: text('name'), createdAt: timestamp('created_at').defaultNow().notNull(), updatedAt: timestamp('updated_at').defaultNow().notNull(), emailVerified: boolean('email_verified').default(false), stripeCustomerId: text('stripe_customer_id') })
+export const users = pgTable('users', { id: uuid('id').primaryKey().defaultRandom(), email: text('email').unique().notNull(), passwordHash: text('password_hash').notNull(), name: text('name'), createdAt: timestamp('created_at').defaultNow().notNull(), updatedAt: timestamp('updated_at').defaultNow().notNull(), emailVerified: boolean('email_verified').default(false), stripeCustomerId: text('stripe_customer_id'),
+  // Add these new fields for social login
+  provider: text('provider').default('email'), // 'email', 'google', 'github', 'facebook', 'twitter'
+  providerId: text('provider_id'), // OAuth provider user ID
+  avatar: text('avatar'), // Profile image URL
+ })
 export const teams = pgTable('teams', { id: uuid('id').primaryKey().defaultRandom(), name: text('name').notNull(), slug: text('slug').unique().notNull(), createdAt: timestamp('created_at').defaultNow().notNull(), updatedAt: timestamp('updated_at').defaultNow().notNull() })
 export const teamMembers = pgTable('team_members', { id: uuid('id').primaryKey().defaultRandom(), userId: uuid('user_id').references(() => users.id, { onDelete: 'cascade' }).notNull(), teamId: uuid('team_id').references(() => teams.id, { onDelete: 'cascade' }).notNull(), role: roleEnum('role').default('member').notNull(), createdAt: timestamp('created_at').defaultNow().notNull() })
 export const products = pgTable('products', { id: text('id').primaryKey(), name: text('name').notNull(), description: text('description'), active: boolean('active').default(true).notNull(), metadata: jsonb('metadata'), createdAt: timestamp('created_at').defaultNow().notNull(), updatedAt: timestamp('updated_at').defaultNow().notNull() })
