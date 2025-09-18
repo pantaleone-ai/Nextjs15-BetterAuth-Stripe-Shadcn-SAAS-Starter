@@ -57,7 +57,7 @@ export async function GET(request: NextRequest) {
     })
 
     if (!user) {
-      const [newUser] = await db.insert(users).values({
+      const [newUser] = await (db.insert(users).values({
         email: primaryEmail,
         name: profile.name || profile.login,
         passwordHash: '', // Empty for social login
@@ -65,17 +65,17 @@ export async function GET(request: NextRequest) {
         provider: 'github',
         providerId: profile.id.toString(),
         avatar: profile.avatar_url,
-      }).returning()
+      } as any)).returning()
       user = newUser
     } else if (user.provider !== 'github') {
       // Update existing email user with GitHub info
-      await db.update(users)
+      await (db.update(users)
         .set({
           provider: 'github',
           providerId: profile.id.toString(),
           avatar: profile.avatar_url,
           emailVerified: true,
-        })
+        } as any))
         .where(eq(users.id, user.id))
     }
 

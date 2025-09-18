@@ -50,7 +50,7 @@ export async function GET(request: NextRequest) {
     })
 
     if (!user) {
-      const [newUser] = await db.insert(users).values({
+      const [newUser] = await (db.insert(users).values({
         email: profile.email,
         name: profile.name,
         passwordHash: '', // Empty for social login
@@ -58,17 +58,17 @@ export async function GET(request: NextRequest) {
         provider: 'facebook',
         providerId: profile.id,
         avatar: profile.picture?.data?.url,
-      }).returning()
+      } as any)).returning()
       user = newUser
     } else if (user.provider !== 'facebook') {
       // Update existing email user with Facebook info
-      await db.update(users)
+      await (db.update(users)
         .set({
           provider: 'facebook',
           providerId: profile.id,
           avatar: profile.picture?.data?.url,
           emailVerified: true,
-        })
+        } as any))
         .where(eq(users.id, user.id))
     }
 

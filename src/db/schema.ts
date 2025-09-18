@@ -5,7 +5,7 @@ import { z } from 'zod'
 export const roleEnum = pgEnum('role', ['owner','member'])
 export const subscriptionStatusEnum = pgEnum('subscription_status', ['incomplete','incomplete_expired','trialing','active','past_due','canceled','unpaid','paused'])
 
-export const users = pgTable('users', { id: uuid('id').primaryKey().defaultRandom(), email: text('email').unique().notNull(), passwordHash: text('password_hash').notNull(), name: text('name'), createdAt: timestamp('created_at').defaultNow().notNull(), updatedAt: timestamp('updated_at').defaultNow().notNull(), emailVerified: boolean('email_verified').default(false), stripeCustomerId: text('stripe_customer_id'),
+export const users = pgTable('users', { id: uuid('id').primaryKey().defaultRandom(), email: text('email').unique().notNull(), passwordHash: text('password_hash'), name: text('name'), createdAt: timestamp('created_at').defaultNow().notNull(), updatedAt: timestamp('updated_at').defaultNow().notNull(), emailVerified: boolean('email_verified').default(false), stripeCustomerId: text('stripe_customer_id'),
   // Add these new fields for social login
   provider: text('provider').default('email'), // 'email', 'google', 'github', 'facebook', 'twitter'
   providerId: text('provider_id'), // OAuth provider user ID

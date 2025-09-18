@@ -58,7 +58,7 @@ export async function GET(request: NextRequest) {
     })
 
     if (!user) {
-      const [newUser] = await db.insert(users).values({
+      const [newUser] = await (db.insert(users).values({
         email: pseudoEmail,
         name: profile.name,
         passwordHash: '', // Empty for social login
@@ -66,17 +66,17 @@ export async function GET(request: NextRequest) {
         provider: 'twitter',
         providerId: profile.id,
         avatar: profile.profile_image_url,
-      }).returning()
+      } as any)).returning()
       user = newUser
     } else if (user.provider !== 'twitter') {
       // Update existing email user with Twitter info
-      await db.update(users)
+      await (db.update(users)
         .set({
           provider: 'twitter',
           providerId: profile.id,
           avatar: profile.profile_image_url,
           emailVerified: true,
-        })
+        } as any))
         .where(eq(users.id, user.id))
     }
 

@@ -14,8 +14,7 @@
     "db:seed": "tsx src/db/seed.ts",
     "db:studio": "drizzle-kit studio",
     "stripe:listen": "stripe listen --forward-to localhost:3000/api/stripe/webhook",
-    "sitemap": "next-sitemap",
-    "postbuild": "next-sitemap"
+    "sitemap": "next-sitemap"
   },
   "dependencies": {
     "@next/mdx": "^15.5.3",

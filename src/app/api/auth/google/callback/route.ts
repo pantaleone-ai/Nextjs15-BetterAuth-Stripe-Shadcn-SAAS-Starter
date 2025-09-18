@@ -43,7 +43,7 @@ export async function GET(request: NextRequest) {
     })
 
     if (!user) {
-      const [newUser] = await db.insert(users).values({
+      const [newUser] = await (db.insert(users).values({
         email: payload.email,
         name: payload.name || payload.email.split('@')[0],
         passwordHash: '', // Empty for social login
@@ -51,17 +51,17 @@ export async function GET(request: NextRequest) {
         provider: 'google',
         providerId: payload.sub, // Google user ID
         avatar: payload.picture,
-      }).returning()
+      } as any)).returning()
       user = newUser
     } else if (user.provider !== 'google') {
       // Update existing email user with Google info
-      await db.update(users)
+      await (db.update(users)
         .set({
           provider: 'google',
           providerId: payload.sub,
           avatar: payload.picture,
           emailVerified: true,
-        })
+        } as any))
         .where(eq(users.id, user.id))
     }
 

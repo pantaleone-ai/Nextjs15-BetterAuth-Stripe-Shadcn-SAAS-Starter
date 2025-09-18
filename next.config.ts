@@ -3,7 +3,6 @@ import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
   pageExtensions: ['js','jsx','md','mdx','ts','tsx'],
-  experimental: { mdxRs: false },
   images: { remotePatterns: [{ protocol: 'https', hostname: '**' }] },
   async headers() {
     return [{
