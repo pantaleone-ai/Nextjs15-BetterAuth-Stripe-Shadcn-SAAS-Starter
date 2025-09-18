@@ -4,6 +4,7 @@ import { db } from '@/db/client'
 import { users } from '@/db/schema'
 import { createSession } from '@/lib/auth'
 import { eq } from 'drizzle-orm'
+import type { InsertUser } from '@/db/schema'
 
 const FACEBOOK_CLIENT_ID = process.env.FACEBOOK_CLIENT_ID!
 const FACEBOOK_CLIENT_SECRET = process.env.FACEBOOK_CLIENT_SECRET!
@@ -58,7 +59,7 @@ export async function GET(request: NextRequest) {
         provider: 'facebook',
         providerId: profile.id,
         avatar: profile.picture?.data?.url,
-      } as any)).returning()
+      } as Omit<InsertUser, 'id' | 'createdAt' | 'updatedAt'>)).returning()
       user = newUser
     } else if (user.provider !== 'facebook') {
       // Update existing email user with Facebook info
@@ -68,7 +69,7 @@ export async function GET(request: NextRequest) {
           providerId: profile.id,
           avatar: profile.picture?.data?.url,
           emailVerified: true,
-        } as any))
+        } as Partial<Omit<InsertUser, 'id' | 'createdAt' | 'updatedAt'>>))
         .where(eq(users.id, user.id))
     }
 

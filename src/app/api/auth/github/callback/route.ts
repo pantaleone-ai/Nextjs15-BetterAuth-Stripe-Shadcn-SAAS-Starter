@@ -4,6 +4,7 @@ import { db } from '@/db/client'
 import { users } from '@/db/schema'
 import { createSession } from '@/lib/auth'
 import { eq } from 'drizzle-orm'
+import type { InsertUser } from '@/db/schema'
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)
@@ -45,7 +46,7 @@ export async function GET(request: NextRequest) {
     })
 
     const emails = emailResponse.data
-    const primaryEmail = emails.find((email: any) => email.primary)?.email
+    const primaryEmail = emails.find((email: { primary: boolean; email: string }) => email.primary)?.email
 
     if (!primaryEmail) {
       return NextResponse.redirect('/sign-in?error=no_email')
@@ -65,7 +66,7 @@ export async function GET(request: NextRequest) {
         provider: 'github',
         providerId: profile.id.toString(),
         avatar: profile.avatar_url,
-      } as any)).returning()
+      } as Omit<InsertUser, 'id' | 'createdAt' | 'updatedAt'>)).returning()
       user = newUser
     } else if (user.provider !== 'github') {
       // Update existing email user with GitHub info
@@ -75,7 +76,7 @@ export async function GET(request: NextRequest) {
           providerId: profile.id.toString(),
           avatar: profile.avatar_url,
           emailVerified: true,
-        } as any))
+        } as Partial<Omit<InsertUser, 'id' | 'createdAt' | 'updatedAt'>>))
         .where(eq(users.id, user.id))
     }
 

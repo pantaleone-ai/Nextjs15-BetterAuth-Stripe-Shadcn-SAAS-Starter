@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 
 const FACEBOOK_CLIENT_ID = process.env.FACEBOOK_CLIENT_ID!
 const REDIRECT_URI = `${process.env.BASE_URL}/api/auth/facebook/callback`
