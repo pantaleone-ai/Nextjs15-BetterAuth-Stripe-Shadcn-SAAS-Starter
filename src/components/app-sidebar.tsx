@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { usePathname } from "next/navigation"
 import {
   AudioWaveform,
   BookOpen,
@@ -8,10 +9,12 @@ import {
   Command,
   Frame,
   GalleryVerticalEnd,
+  Home,
   Map,
   PieChart,
   Settings2,
   SquareTerminal,
+  CreditCard,
 } from "lucide-react"
 
 import { NavMain } from "@/components/nav-main"
@@ -27,7 +30,7 @@ import {
 } from "@/components/ui/sidebar"
 
 // This is sample data.
-const data = {
+const sampleData = {
   user: {
     name: "shadcn",
     email: "m@example.com",
@@ -50,68 +53,62 @@ const data = {
       plan: "Free",
     },
   ],
-  navMain: [
+  projects: [
     {
-      title: "Playground",
+      name: "Design Engineering",
       url: "#",
+      icon: Frame,
+    },
+    {
+      name: "Sales & Marketing",
+      url: "#",
+      icon: PieChart,
+    },
+    {
+      name: "Travel",
+      url: "#",
+      icon: Map,
+    },
+  ],
+}
+
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const pathname = usePathname()
+
+  const navMainData = [
+    {
+      title: "Home",
+      url: "/",
+      icon: Home,
+      isActive: pathname === "/",
+    },
+    {
+      title: "Dashboard",
+      url: "/dashboard",
       icon: SquareTerminal,
-      isActive: true,
+      isActive: pathname?.startsWith("/dashboard"),
       items: [
         {
-          title: "History",
-          url: "#",
+          title: "Analytics",
+          url: "/dashboard",
         },
         {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
+          title: "Projects",
           url: "#",
         },
       ],
     },
     {
-      title: "Models",
-      url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
+      title: "Pricing",
+      url: "/pricing",
+      icon: CreditCard,
+      isActive: pathname === "/pricing",
     },
     {
-      title: "Documentation",
-      url: "#",
+      title: "Blog",
+      url: "/blog",
       icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
+      isActive: pathname === "/blog",
     },
     {
       title: "Settings",
@@ -136,38 +133,19 @@ const data = {
         },
       ],
     },
-  ],
-  projects: [
-    {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
-    },
-    {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: PieChart,
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
-    },
-  ],
-}
+  ]
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
+        <TeamSwitcher teams={sampleData.teams} />
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
+        <NavMain items={navMainData} />
+        <NavProjects projects={sampleData.projects} />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser user={sampleData.user} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>

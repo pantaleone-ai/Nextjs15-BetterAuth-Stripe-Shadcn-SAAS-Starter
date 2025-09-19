@@ -6,4 +6,4 @@ import { ThemeProvider } from '@/components/ui/theme-provider'
 import { Toaster } from '@/components/ui/toast'
 const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = { title:{ default:'Next.js SaaS Starter - Modernized', template:'%s | Next.js SaaS Starter' }, description:'Modern SaaS starter with enhanced UI' }
-export default function RootLayout({ children }:{ children: React.ReactNode }){ return (<html lang='en' suppressHydrationWarning><head /><body className={cn('min-h-screen bg-background font-sans antialiased', inter.className)}><ThemeProvider attribute='class' defaultTheme='light' enableSystem><div className='relative flex min-h-screen flex-col'><div className='flex-1'>{children}</div></div><Toaster /></ThemeProvider></body></html>) }
+export default function RootLayout({ children }:{ children: React.ReactNode }){ return (<html lang='en' suppressHydrationWarning><head /><body className={cn('min-h-screen bg-background font-sans antialiased', inter.className)}><ThemeProvider attribute='class' defaultTheme='light' enableSystem>{children}<Toaster /></ThemeProvider></body></html>) }
