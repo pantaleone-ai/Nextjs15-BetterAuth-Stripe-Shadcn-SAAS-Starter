@@ -1,5 +1,3 @@
-import fs from 'fs'
-import path from 'path'
 import Link from 'next/link'
 import { Sparkles } from 'lucide-react'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
@@ -15,7 +13,7 @@ interface Frontmatter {
 function getBlogPost() {
   try {
     // Read the MDX file directly
-    const filePath = path.join(process.cwd(), 'src', 'content', 'blog', 'welcome-to-our-blog.mdx')
+    // const filePath = path.join(process.cwd(), 'src', 'content', 'blog', 'welcome-to-our-blog.mdx')
     // const fileContent = fs.readFileSync(filePath, 'utf8')
 
     // Extract frontmatter from file content (simple approach)
