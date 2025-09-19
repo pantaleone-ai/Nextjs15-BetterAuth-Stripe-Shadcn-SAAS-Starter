@@ -1,7 +1,6 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { SocialLogin } from '@/components/ui/social-login'
@@ -10,32 +9,47 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Eye, EyeOff } from 'lucide-react'
 
-export default function SignInPage() {
+export default function SignUpPage() {
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [agreedToTerms, setAgreedToTerms] = useState(false)
   const router = useRouter()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    
+    if (password !== confirmPassword) {
+      alert('Passwords do not match')
+      return
+    }
+    
+    if (!agreedToTerms) {
+      alert('Please agree to the terms and conditions')
+      return
+    }
+    
     setLoading(true)
 
     try {
-      const response = await fetch('/api/auth/sign-in', {
+      const response = await fetch('/api/auth/sign-up', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ name, email, password }),
       })
 
       if (response.ok) {
         router.push('/dashboard')
       } else {
         // Handle error
-        console.error('Sign in failed')
+        console.error('Sign up failed')
       }
     } catch (error) {
-      console.error('Sign in error:', error)
+      console.error('Sign up error:', error)
     } finally {
       setLoading(false)
     }
@@ -56,13 +70,24 @@ export default function SignInPage() {
           <div className="w-full max-w-xs">
             <div className="flex flex-col gap-6">
               <div className="flex flex-col items-center text-center">
-                <h1 className="text-2xl font-bold">Welcome back</h1>
+                <h1 className="text-2xl font-bold">Create an account</h1>
                 <p className="text-balance text-muted-foreground">
-                  Sign in to your account
+                  Enter your details to get started
                 </p>
               </div>
               <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                 <div className="flex flex-col gap-6">
+                  <div className="flex flex-col gap-2">
+                    <Label htmlFor="name">Full Name</Label>
+                    <Input
+                      id="name"
+                      type="text"
+                      placeholder="John Doe"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      required
+                    />
+                  </div>
                   <div className="flex flex-col gap-2">
                     <Label htmlFor="email">Email</Label>
                     <Input
@@ -75,15 +100,7 @@ export default function SignInPage() {
                     />
                   </div>
                   <div className="flex flex-col gap-2">
-                    <div className="flex items-center justify-between">
-                      <Label htmlFor="password">Password</Label>
-                      <a
-                        href="#"
-                        className="text-sm underline-offset-2 hover:underline"
-                      >
-                        Forgot your password?
-                      </a>
-                    </div>
+                    <Label htmlFor="password">Password</Label>
                     <div className="relative">
                       <Input
                         id="password"
@@ -91,6 +108,7 @@ export default function SignInPage() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
+                        minLength={8}
                       />
                       <Button
                         type="button"
@@ -104,22 +122,59 @@ export default function SignInPage() {
                         ) : (
                           <Eye className="h-4 w-4" />
                         )}
-                        <span className="sr-only">
-                          {showPassword ? 'Hide password' : 'Show password'}
-                        </span>
                       </Button>
                     </div>
                   </div>
-                  <Button type="submit" className="w-full" disabled={loading}>
-                    {loading ? 'Signing in...' : 'Sign in'}
+                  <div className="flex flex-col gap-2">
+                    <Label htmlFor="confirmPassword">Confirm Password</Label>
+                    <div className="relative">
+                      <Input
+                        id="confirmPassword"
+                        type={showConfirmPassword ? 'text' : 'password'}
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        required
+                      />
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="sm"
+                        className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
+                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                      >
+                        {showConfirmPassword ? (
+                          <EyeOff className="h-4 w-4" />
+                        ) : (
+                          <Eye className="h-4 w-4" />
+                        )}
+                      </Button>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="checkbox"
+                      id="terms"
+                      checked={agreedToTerms}
+                      onChange={(e) => setAgreedToTerms(e.target.checked)}
+                      className="h-4 w-4"
+                    />
+                    <Label htmlFor="terms" className="text-sm">
+                      I agree to the{' '}
+                      <Link href="/terms" className="underline underline-offset-4">
+                        terms and conditions
+                      </Link>
+                    </Label>
+                  </div>
+                  <Button type="submit" className="w-full" disabled={loading || !agreedToTerms}>
+                    {loading ? 'Creating account...' : 'Create account'}
                   </Button>
                 </div>
               </form>
               <SocialLogin />
               <div className="text-center text-sm">
-                Don&apos;t have an account?{' '}
-                <Link href="/sign-up" className="underline underline-offset-4">
-                  Sign up
+                Already have an account?{' '}
+                <Link href="/sign-in" className="underline underline-offset-4">
+                  Sign in
                 </Link>
               </div>
             </div>
