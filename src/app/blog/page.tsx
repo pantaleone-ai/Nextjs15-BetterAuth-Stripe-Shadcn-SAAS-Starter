@@ -31,8 +31,8 @@ function getBlogPost() {
         <div>
           <h1>Welcome to Our Blog</h1>
           <p>Hello, fellow developers and tech enthusiasts! 👋</p>
-          <p>We're excited to launch our new blog where we'll be sharing insights, tutorials, and updates about our journey in building modern web applications.</p>
-          <h2>What You'll Find Here</h2>
+          <p>We&apos;re excited to launch our new blog where we&apos;ll be sharing insights, tutorials, and updates about our journey in building modern web applications.</p>
+          <h2>What You&apos;ll Find Here</h2>
           <p>This blog will cover a wide range of topics including:</p>
           <h3>🚀 Development Tutorials</h3>
           <ul>
@@ -56,7 +56,7 @@ function getBlogPost() {
           </ul>
           <h2>Getting Started</h2>
           <p>All our content is written in MDX, which allows us to combine the power of Markdown with React components for a richer content experience.</p>
-          <p>We hope you find our content helpful and engaging. Feel free to reach out if you have suggestions for topics you'd like us to cover!</p>
+          <p>We hope you find our content helpful and engaging. Feel free to reach out if you have suggestions for topics you&apos;d like us to cover!</p>
           <p>Stay tuned for more posts coming soon.</p>
           <p>Happy coding! 🎉</p>
         </div>
