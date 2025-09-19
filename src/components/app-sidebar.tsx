@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation"
 import {
   AudioWaveform,
   BookOpen,
-  Bot,
   Command,
   Frame,
   GalleryVerticalEnd,

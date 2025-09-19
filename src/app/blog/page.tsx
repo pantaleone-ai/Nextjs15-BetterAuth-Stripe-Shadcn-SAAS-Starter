@@ -16,7 +16,7 @@ function getBlogPost() {
   try {
     // Read the MDX file directly
     const filePath = path.join(process.cwd(), 'src', 'content', 'blog', 'welcome-to-our-blog.mdx')
-    const fileContent = fs.readFileSync(filePath, 'utf8')
+    // const fileContent = fs.readFileSync(filePath, 'utf8')
 
     // Extract frontmatter from file content (simple approach)
     const frontmatter: Frontmatter = {

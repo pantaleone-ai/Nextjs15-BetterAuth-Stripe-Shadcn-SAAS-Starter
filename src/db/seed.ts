@@ -20,9 +20,9 @@ async function seed() {
   try {
     console.log('🌱 Seeding database...')
     
-    // Example: Create a test user
-    const hashedPassword = await hashPassword('password123')
-    
+    // Example: Create a test user (comment out hashed password usage)
+    // const hashedPassword = await hashPassword('password123')
+
     await db.insert(schema.users).values({
       email: 'test@example.com',
       name: 'Test User',
