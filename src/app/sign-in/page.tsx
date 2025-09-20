@@ -47,7 +47,7 @@ export default function SignInPage() {
             Welcome back 
           </CardTitle>
           <CardDescription className="text-center">
-            Enter your email and password to sign in to your account
+            Enter your email and password to sign in
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">

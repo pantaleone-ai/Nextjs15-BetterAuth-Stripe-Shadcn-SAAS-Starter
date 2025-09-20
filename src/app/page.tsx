@@ -66,7 +66,7 @@ export default function HomePage() {
                 <div className="space-y-4">
                   <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none">
                     Build Your Next{" "}
-                    <span className="gradient-text block">
+                    <span className="block text-3xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none">
                       SaaS Application
                     </span>
                   </h1>

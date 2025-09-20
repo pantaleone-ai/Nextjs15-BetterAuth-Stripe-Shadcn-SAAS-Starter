@@ -50,7 +50,7 @@ export default function SignUpPage() {
             Create an account
           </CardTitle>
           <CardDescription className="text-center">
-            Enter your details to create your account
+            Enter your email and password or signup with social
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
