@@ -44,7 +44,7 @@ export default function SignInPage() {
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl font-bold text-center">
-            Welcome back 
+            Welcome back! 
           </CardTitle>
           <CardDescription className="text-center">
             Enter your email and password to sign in
@@ -80,9 +80,9 @@ export default function SignInPage() {
 
           <SocialLogin />
 
-          <div className="text-center text-sm">
+          <div className="text-center text-sm pt-6">
             Don&apos;t have an account?{' '}
-            <Link href="/sign-up" className="text-primary hover:underline">
+            <Link href="/sign-up" className="text-primary font-bold hover:underline">
               Sign up
             </Link>
           </div>

@@ -94,9 +94,9 @@ export default function SignUpPage() {
 
           <SocialLogin />
 
-          <div className="text-center text-sm">
+          <div className="text-center text-sm pt-6">
             Already have an account?{' '}
-            <Link href="/sign-in" className="text-primary hover:underline">
+            <Link href="/sign-in" className="text-primary font-bold hover:underline">
               Sign in
             </Link>
           </div>

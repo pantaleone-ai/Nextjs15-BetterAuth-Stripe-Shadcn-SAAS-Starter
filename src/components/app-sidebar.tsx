@@ -14,6 +14,7 @@ import {
   Settings2,
   SquareTerminal,
   CreditCard,
+  Expand,
 } from "lucide-react"
 
 import { NavMain } from "@/components/nav-main"
@@ -41,34 +42,34 @@ const sampleData = {
       logo: GalleryVerticalEnd,
       plan: "Enterprise",
     },
-    {
-      name: "Acme Corp.",
-      logo: AudioWaveform,
-      plan: "Startup",
-    },
-    {
-      name: "Evil Corp.",
-      logo: Command,
-      plan: "Free",
-    },
+    // {
+    //   name: "Acme Corp.",
+    //   logo: AudioWaveform,
+    //   plan: "Startup",
+    // },
+    // {
+    //   name: "Evil Corp.",
+    //   logo: Command,
+    //   plan: "Free",
+    // },
   ],
-  projects: [
-    {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
-    },
-    {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: PieChart,
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
-    },
-  ],
+  // projects: [
+  //   {
+  //     name: "Design Engineering",
+  //     url: "#",
+  //     icon: Frame,
+  //   },
+  //   {
+  //     name: "Sales & Marketing",
+  //     url: "#",
+  //     icon: PieChart,
+  //   },
+  //   {
+  //     name: "Travel",
+  //     url: "#",
+  //     icon: Map,
+  //   },
+  // ],
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -79,7 +80,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       title: "Home",
       url: "/",
       icon: Home,
-      isActive: pathname === "/",
+      isActive: pathname?.startsWith("/"),
     },
     {
       title: "Dashboard",
@@ -109,29 +110,29 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       icon: BookOpen,
       isActive: pathname === "/blog",
     },
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
-      ],
-    },
+    // {
+    //   title: "Settings",
+    //   url: "#",
+    //   icon: Settings2,
+    //   items: [
+    //     {
+    //       title: "General",
+    //       url: "#",
+    //     },
+    //     {
+    //       title: "Team",
+    //       url: "#",
+    //     },
+    //     {
+    //       title: "Billing",
+    //       url: "#",
+    //     },
+    //     {
+    //       title: "Limits",
+    //       url: "#",
+    //     },
+    //   ],
+    // },
   ]
 
   return (
@@ -141,7 +142,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={navMainData} />
-        <NavProjects projects={sampleData.projects} />
+        {/* <NavProjects projects={sampleData.projects} /> */}
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={sampleData.user} />
