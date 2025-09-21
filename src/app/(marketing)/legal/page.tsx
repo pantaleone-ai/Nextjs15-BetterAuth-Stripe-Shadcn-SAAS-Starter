@@ -51,8 +51,8 @@ export default function LegalPage() {
           
           <h3>1. Acceptance of Terms</h3>
           <p>
-            By accessing or using this service ("Service") provided by Pantaleone AI ("Company," "we," "our," or "us"), 
-            you ("User" or "you") agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, 
+            By accessing or using this service (&quot;Service&quot;) provided by Pantaleone AI (&quot;Company,&quot; &quot;we,&quot; &quot;our,&quot; or &quot;us&quot;), 
+            you (&quot;User&quot; or &quot;you&quot;) agree to be bound by these Terms of Service (&quot;Terms&quot;). If you do not agree to these Terms, 
             do not use the Service.
           </p>
 
@@ -76,7 +76,7 @@ export default function LegalPage() {
           <ul>
             <li>Violate any applicable laws, regulations, or third-party rights</li>
             <li>Transmit harmful, offensive, or inappropriate content</li>
-            <li>Attempt to gain unauthorized access to our systems or other users' accounts</li>
+            <li>Attempt to gain unauthorized access to our systems or other users&apos; accounts</li>
             <li>Interfere with or disrupt the Service or servers</li>
             <li>Use automated means to access the Service without permission</li>
             <li>Reverse engineer, decompile, or attempt to extract source code</li>
@@ -123,7 +123,7 @@ export default function LegalPage() {
 
           <h3>10. Disclaimers and Limitation of Liability</h3>
           <p>
-            THE SERVICE IS PROVIDED "AS IS" WITHOUT WARRANTIES OF ANY KIND. PANTALEONE AI DISCLAIMS ALL WARRANTIES, 
+            THE SERVICE IS PROVIDED &quot;AS IS&quot; WITHOUT WARRANTIES OF ANY KIND. PANTALEONE AI DISCLAIMS ALL WARRANTIES, 
             EXPRESS OR IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
           </p>
           <p>
@@ -234,7 +234,7 @@ export default function LegalPage() {
             safeguards are in place to protect your data during international transfers.
           </p>
 
-          <h3>10. Children's Privacy</h3>
+          <h3>10. Children&apos;s Privacy</h3>
           <p>
             Our Service is not intended for children under 13 (or 16 in the EU). We do not knowingly collect personal 
             information from children. If you believe we have collected information from a child, please contact us immediately.
@@ -251,9 +251,9 @@ export default function LegalPage() {
             If you have questions about these Terms or Privacy Policy, please contact us:
           </p>
           <ul>
-            <li>Email: mdptrading@gmail.com</li>
+            <li>Email: legal@pantaleone.net</li>
             <li>Website: <Link href="https://pantaleone.net" className="text-primary hover:underline">pantaleone.net</Link></li>
-            <li>Address: castle rock, colorado, 80104</li>
+            <li>Address: [Your Business Address]</li>
           </ul>
 
           <hr className="my-8" />
