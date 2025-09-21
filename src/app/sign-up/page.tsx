@@ -10,7 +10,8 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { authClient } from '@/lib/auth/client'
 
-export default function SignInPage() {
+export default function SignUpPage() {
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
@@ -21,19 +22,21 @@ export default function SignInPage() {
     setLoading(true)
 
     try {
-      const result = await authClient.signIn.email({
+      const result = await authClient.signUp.email({
         email,
         password,
+        name,
       })
 
       if (result.data) {
+        // Since email verification is required, redirect to a verification page or dashboard
         router.push('/dashboard')
       } else {
         // Handle error
-        console.error('Sign in failed', result.error)
+        console.error('Sign up failed', result.error)
       }
     } catch (error) {
-      console.error('Sign in error:', error)
+      console.error('Sign up error:', error)
     } finally {
       setLoading(false)
     }
@@ -44,14 +47,25 @@ export default function SignInPage() {
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl font-bold text-center">
-            Welcome back! 
+            Create an account
           </CardTitle>
           <CardDescription className="text-center">
-            Enter your email and password to sign in
+            Enter your email and password or signup with social
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="name">Name</Label>
+              <Input
+                id="name"
+                type="text"
+                placeholder="John Doe"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </div>
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <Input
@@ -74,16 +88,16 @@ export default function SignInPage() {
               />
             </div>
             <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? 'Signing in...' : 'Sign In'}
+              {loading ? 'Creating account...' : 'Sign Up'}
             </Button>
           </form>
 
           <SocialLogin />
 
           <div className="text-center text-sm pt-6">
-            Don&apos;t have an account?{' '}
-            <Link href="/sign-up" className="text-primary font-bold hover:underline">
-              Sign up
+            Already have an account?{' '}
+            <Link href="/sign-in" className="text-primary font-bold hover:underline">
+              Sign in
             </Link>
           </div>
         </CardContent>
