@@ -19,6 +19,7 @@
     "@better-auth/stripe": "^1.2.12",
     "@hookform/resolvers": "^5.1.1",
     "@next/mdx": "^15.5.0",
+    "@next/third-parties": "^15.5.3",
     "@radix-ui/react-accordion": "^1.2.11",
     "@radix-ui/react-avatar": "^1.1.10",
     "@radix-ui/react-collapsible": "^1.1.12",
