@@ -1,13 +1,73 @@
 import Link from "next/link";
-import { 
-  ArrowRight, 
-  Shield, 
-  Zap, 
-  Database, 
+import { Metadata } from 'next';
+import {
+  ArrowRight,
+  Shield,
+  Zap,
+  Database,
   Paintbrush,    // Instead of Palette
-  Sparkles,      // Instead of Rocket  
+  Sparkles,      // Instead of Rocket
   Code2          // Instead of Code
 } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'AI SaaS Starter Kit: Next.js AI App Templates & Boilerplates for Startups',
+  description: 'Launch an AI SaaS starter kit built on Next.js to ship auth, subscriptions, and chat/RAG templates fast—production‑ready and developer‑first. Best AI starter kits 2025.',
+  keywords: [
+    'AI SaaS starter kit',
+    'Next.js AI starter kit',
+    'Next.js SaaS starter',
+    'AI app template',
+    'AI SaaS boilerplate',
+    'Next.js SaaS boilerplate',
+    'AI starter kit for startups',
+    'AI wrapper starter/template',
+    'Best AI starter kits',
+    'AI app templates (Vercel)',
+    'Next.js SaaS starter templates',
+    'AI boilerplates for startups'
+  ],
+  authors: [{ name: 'Pantaleone.net' }],
+  creator: 'Pantaleone.net',
+  publisher: 'Pantaleone.net',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://pantaleone-ai-saas-starter.vercel.app/',
+    title: 'AI SaaS Starter Kit: Next.js AI App Templates & Boilerplates for Startups',
+    description: 'Launch an AI SaaS starter kit built on Next.js to ship auth, subscriptions, and chat/RAG templates fast—production‑ready and developer‑first. Best AI starter kits 2025.',
+    siteName: 'Pantaleone AI SaaS Starter',
+    images: [
+      {
+        url: 'https://pantaleone-ai-saas-starter.vercel.app/og-image.jpg', // TODO: replace with actual image
+        width: 1200,
+        height: 630,
+        alt: 'AI SaaS Starter Kit Preview',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AI SaaS Starter Kit: Next.js AI App Templates & Boilerplates for Startups',
+    description: 'Launch an AI SaaS starter kit built on Next.js to ship auth, subscriptions, and chat/RAG templates fast—production‑ready and developer‑first.',
+    images: ['https://pantaleone-ai-saas-starter.vercel.app/og-image.jpg'], // TODO: replace
+    creator: '@pantaleone_ai',
+  },
+  alternates: {
+    canonical: 'https://pantaleone-ai-saas-starter.vercel.app/',
+  },
+};
 
 import { Button } from "@/components/ui/button";
 import {
