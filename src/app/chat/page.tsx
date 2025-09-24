@@ -1,6 +1,9 @@
 'use client'
 
 import { useState, FormEvent } from 'react'
+
+// Force dynamic rendering since we're using client-side context
+export const dynamic = 'force-dynamic'
 import { ChatUI } from '@theme/components/chat-ui'
 import { AppSidebar } from '@theme/components/app-sidebar'
 import { SidebarInset, SidebarProvider } from '@theme/components/ui/sidebar'
