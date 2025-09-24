@@ -1,3 +1,4 @@
+import path from 'path'
 import createMDX from '@next/mdx'
 import withBundleAnalyzer from '@next/bundle-analyzer'
 import type { NextConfig } from 'next'
@@ -5,6 +6,12 @@ import type { NextConfig } from 'next'
 const nextConfig: NextConfig = {
   // Add bundle analyzer support
   pageExtensions: ['js','jsx','md','mdx','ts','tsx'],
+  // Theme-aware webpack aliases
+  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    const activeTheme = process.env.THEME || 'base'
+    config.resolve.alias['@theme'] = path.join(__dirname, 'themes', activeTheme)
+    return config
+  },
   // Enhanced image optimization
   images: {
     remotePatterns: [{ protocol: 'https', hostname: '**' }],

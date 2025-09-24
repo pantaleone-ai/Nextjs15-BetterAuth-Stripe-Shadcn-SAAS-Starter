@@ -1,9 +1,9 @@
 'use client'
 
 import { useState, FormEvent } from 'react'
-import { ChatUI } from '@/components/chat-ui'
-import { AppSidebar } from '@/components/app-sidebar'
-import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar'
+import { ChatUI } from '@theme/components/chat-ui'
+import { AppSidebar } from '@theme/components/app-sidebar'
+import { SidebarInset, SidebarProvider } from '@theme/components/ui/sidebar'
 
 type Message = {
   id: string

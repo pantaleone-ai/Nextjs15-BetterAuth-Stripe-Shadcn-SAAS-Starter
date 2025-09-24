@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Check, Sparkles } from "lucide-react";
 import { Metadata } from 'next';
-import { Button } from "@/components/ui/button";
+import { Button } from "@theme/components/ui/button";
 import {
   Card,
   CardContent,
@@ -9,10 +9,10 @@ import {
   CardHeader,
   CardTitle,
   CardFooter,
-} from "@/components/ui/card";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/app-sidebar";
+} from "@theme/components/ui/card";
+import { ThemeToggle } from "@theme/components/ui/theme-toggle";
+import { SidebarProvider, SidebarTrigger } from "@theme/components/ui/sidebar";
+import { AppSidebar } from "@theme/components/app-sidebar";
 
 export const metadata: Metadata = {
   title: 'Pricing | AI SaaS Starter Kit & Next.js Boilerplates',

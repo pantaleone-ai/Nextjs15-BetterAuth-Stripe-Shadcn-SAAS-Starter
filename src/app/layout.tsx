@@ -9,7 +9,7 @@ const inter = Inter({
   variable: '--font-inter',
   display: 'swap',
 })
-import "@/styles/globals.css";
+import "@theme/styles/globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Toaster } from "@/components/ui/toast";
