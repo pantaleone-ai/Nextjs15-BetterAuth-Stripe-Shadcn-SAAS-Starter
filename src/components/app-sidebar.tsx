@@ -102,6 +102,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           ],
         },
         {
+          title: "Chat",
+          url: "/chat",
+          icon: SquareTerminal,
+          isActive: pathname?.startsWith("/chat"),
+        },
+        {
           title: "Blog",
           url: "/blog",
           icon: BookOpen,

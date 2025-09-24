@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Toaster } from "@/components/ui/toast";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { ChatEntryPoint } from "@/components/chat-entrypoint";
 const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: {
@@ -76,6 +77,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           {children}
           <Toaster />
+          <ChatEntryPoint />
         </ThemeProvider>
         <GoogleAnalytics gaId={process.env.GA_MEASUREMENT_ID} />
       </body>
