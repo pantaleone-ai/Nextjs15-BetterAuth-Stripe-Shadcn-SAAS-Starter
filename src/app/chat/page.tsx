@@ -2,11 +2,10 @@
 
 import { useState, FormEvent } from 'react'
 
-// Force dynamic rendering since we're using client-side context
+// Disable static optimization completely for this chat page
 export const dynamic = 'force-dynamic'
+export const revalidate = 0
 import { ChatUI } from '@theme/components/chat-ui'
-import { AppSidebar } from '@theme/components/app-sidebar'
-import { SidebarInset, SidebarProvider } from '@theme/components/ui/sidebar'
 
 type Message = {
   id: string
@@ -71,18 +70,13 @@ export default function ChatPage() {
   }
 
   return (
-    <SidebarProvider>
-      <AppSidebar />
-      <SidebarInset>
-        <ChatUI
-          messages={messages}
-          input={input}
-          handleInputChange={handleInputChange}
-          handleSubmit={handleSubmit}
-          isLoading={isLoading}
-          error={error}
-        />
-      </SidebarInset>
-    </SidebarProvider>
+    <ChatUI
+      messages={messages}
+      input={input}
+      handleInputChange={handleInputChange}
+      handleSubmit={handleSubmit}
+      isLoading={isLoading}
+      error={error}
+    />
   )
 }
