@@ -7,7 +7,9 @@ import {
   Database,
   Paintbrush,    // Instead of Palette
   Sparkles,      // Instead of Rocket
-  Code2          // Instead of Code
+  Code2,         // Instead of Code
+  MessageCircle,
+  Bot
 } from 'lucide-react'
 
 export const metadata: Metadata = {
@@ -178,7 +180,7 @@ export default function HomePage() {
         and focus on building your unique features.
       </p>
     </div>
-    <div className="grid gap-6 lg:grid-cols-3 lg:gap-12">
+    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-7 lg:gap-12">
       <Card variant="glass" className="text-center">
         <CardHeader>
           <div className="w-12 h-12 gradient-primary rounded-xl flex items-center justify-center mx-auto mb-4">
@@ -296,11 +298,32 @@ export default function HomePage() {
         </CardHeader>
         <CardContent>
           <p className="text-sm text-muted-foreground mb-3">
-            Full TypeScript setup with ESLint, type safety, MDX support, 
+            Full TypeScript setup with ESLint, type safety, MDX support,
             and automated sitemap generation for SEO.
           </p>
           <div className="text-xs text-muted-foreground/80">
             ✓ Full TypeScript • ✓ ESLint config • ✓ MDX support • ✓ SEO ready
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card variant="glass" className="text-center">
+        <CardHeader>
+          <div className="w-12 h-12 gradient-primary rounded-xl flex items-center justify-center mx-auto mb-4">
+            <Bot className="w-6 h-6 text-white" />
+          </div>
+          <CardTitle>AI Chat Interface</CardTitle>
+          <CardDescription>
+            GPT-4 streaming chat with file attachments and real-time responses
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p className="text-sm text-muted-foreground mb-3">
+            Integrated AI chat with streaming responses, mobile-responsive UI,
+            floating entrance button, and extensible file processing capabilities.
+          </p>
+          <div className="text-xs text-muted-foreground/80">
+            ✓ GPT-4 integration • ✓ Streaming responses • ✓ File attachments • ✓ Mobile responsive
           </div>
         </CardContent>
       </Card>

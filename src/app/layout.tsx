@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { GeistSans } from 'geist/font/sans'
+import { GeistMono } from 'geist/font/mono'
 import "@/styles/globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Toaster } from "@/components/ui/toast";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { ChatEntryPoint } from "@/components/chat-entrypoint";
-const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: {
     default: "AI SaaS Starter Kit | Next.js AI App Templates & Boilerplates",
@@ -71,7 +71,7 @@ export default function RootLayout({
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
-          inter.className
+          GeistSans.className
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
