@@ -10,7 +10,7 @@ export async function POST(req: Request) {
       messages,
     });
 
-    return result.toDataStreamResponse();
+    return result.toTextStreamResponse();
   } catch (error) {
     console.error('Error in chat API:', error);
     return new Response('Internal Server Error', { status: 500 });
