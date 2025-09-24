@@ -4,7 +4,6 @@ import { useState, FormEvent } from 'react'
 
 // Disable static optimization completely for this chat page
 export const dynamic = 'force-dynamic'
-export const revalidate = 0
 import { ChatUI } from '@theme/components/chat-ui'
 
 type Message = {
