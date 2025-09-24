@@ -75,64 +75,66 @@ const sampleData = {
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const pathname = usePathname()
 
-  const navMainData = [
+  const navGroups = [
     {
-      title: "Home",
-      url: "/",
-      icon: Home,
-      isActive: pathname?.startsWith("/"),
-    },
-    {
-      title: "Dashboard",
-      url: "/dashboard",
-      icon: SquareTerminal,
-      isActive: pathname?.startsWith("/dashboard"),
+      label: "Platform",
       items: [
         {
-          title: "Analytics",
-          url: "/dashboard",
+          title: "Home",
+          url: "/",
+          icon: Home,
+          isActive: pathname?.startsWith("/"),
         },
         {
-          title: "Projects",
-          url: "#",
+          title: "Dashboard",
+          url: "/dashboard",
+          icon: SquareTerminal,
+          isActive: pathname?.startsWith("/dashboard"),
+          items: [
+            {
+              title: "Home",
+              url: "/dashboard",
+            },
+            {
+              title: "Apps",
+              url: "/dashboard/apps",
+            },
+          ],
+        },
+        {
+          title: "Blog",
+          url: "/blog",
+          icon: BookOpen,
+          isActive: pathname === "/blog",
+          items: [
+            {
+              title: "Welcome to Our Blog",
+              url: "/blog/welcome-to-our-blog",
+            },
+          ],
         },
       ],
     },
     {
-      title: "Pricing",
-      url: "/pricing",
-      icon: CreditCard,
-      isActive: pathname === "/pricing",
+      label: "Plans",
+      items: [
+        {
+          title: "Starter - $9.99/month - Get Started",
+          url: "/sign-up",
+          icon: CreditCard,
+        },
+        {
+          title: "Professional - $29.99/month - Most Popular - Get Started",
+          url: "/sign-up",
+          icon: CreditCard,
+        },
+        {
+          title: "Enterprise - Custom - Contact Sales",
+          url: "/contact-sales",
+          icon: CreditCard,
+        },
+      ],
     },
-    {
-      title: "Blog",
-      url: "/blog",
-      icon: BookOpen,
-      isActive: pathname === "/blog",
-    },
-    // {
-    //   title: "Settings",
-    //   url: "#",
-    //   icon: Settings2,
-    //   items: [
-    //     {
-    //       title: "General",
-    //       url: "#",
-    //     },
-    //     {
-    //       title: "Team",
-    //       url: "#",
-    //     },
-    //     {
-    //       title: "Billing",
-    //       url: "#",
-    //     },
-    //     {
-    //       title: "Limits",
-    //       url: "#",
-    //     },
-    //   ],
-    // },
   ]
 
   return (
@@ -141,7 +143,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <TeamSwitcher teams={sampleData.teams} />
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={navMainData} />
+        <NavMain groups={navGroups} />
         {/* <NavProjects projects={sampleData.projects} /> */}
       </SidebarContent>
       <SidebarFooter>
