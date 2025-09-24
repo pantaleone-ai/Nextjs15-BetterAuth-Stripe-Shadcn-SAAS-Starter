@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { Metadata } from 'next'
 import { Sparkles } from 'lucide-react'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
@@ -160,9 +161,58 @@ export default async function BlogPage() {
 }
 
 // Metadata for SEO
-export const metadata = {
-  title: 'Blog | Next.js SaaS Starter',
-  description: 'Insights, tutorials, and updates about our journey and the wider tech community.'
+export const metadata: Metadata = {
+  title: 'Blog | AI SaaS Starter Kit News & Tutorials',
+  description: 'Discover insights, tutorials, and updates on building AI SaaS applications with Next.js. Learn from our experience creating production-ready starter templates and boilerplates.',
+  keywords: [
+    'AI SaaS blog',
+    'Next.js SaaS tutorials',
+    'AI app development',
+    'SaaS starter news',
+    'Next.js boilerplates blog',
+    'AI starter kit updates',
+    'AI SaaS insights'
+  ],
+  authors: [{ name: 'Pantaleone.net' }],
+  creator: 'Pantaleone.net',
+  publisher: 'Pantaleone.net',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://pantaleone-ai-saas-starter.vercel.app/blog',
+    title: 'Blog | AI SaaS Starter Kit News & Tutorials',
+    description: 'Discover insights, tutorials, and updates on building AI SaaS applications with Next.js. Learn from our experience creating production-ready starter templates and boilerplates.',
+    siteName: 'Pantaleone AI SaaS Starter',
+    images: [
+      {
+        url: 'https://pantaleone-ai-saas-starter.vercel.app/og-image-blog.jpg', // TODO: replace
+        width: 1200,
+        height: 630,
+        alt: 'AI SaaS Starter Kit Blog',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Blog | AI SaaS Starter Kit News & Tutorials',
+    description: 'Discover insights and tutorials on building AI SaaS apps with Next.js starter templates.',
+    images: ['https://pantaleone-ai-saas-starter.vercel.app/og-image-blog.jpg'], // TODO
+    creator: '@pantaleone_ai',
+  },
+  alternates: {
+    canonical: 'https://pantaleone-ai-saas-starter.vercel.app/blog',
+  },
 }
 
 // Generate static paths (optional, for SSG)

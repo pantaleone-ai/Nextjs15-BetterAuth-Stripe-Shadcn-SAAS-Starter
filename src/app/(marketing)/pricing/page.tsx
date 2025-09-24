@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Check, Sparkles } from "lucide-react";
+import { Metadata } from 'next';
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -13,9 +14,58 @@ import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 
-export const metadata = {
-  title: "Pricing",
-  description: "Choose the perfect plan",
+export const metadata: Metadata = {
+  title: 'Pricing | AI SaaS Starter Kit & Next.js Boilerplates',
+  description: 'Affordable pricing plans for production-ready Next.js AI SaaS starter kits. Start free, scale with Professional and Enterprise plans—includes auth, payments & templates.',
+  keywords: [
+    'AI SaaS starter pricing',
+    'Next.js SaaS pricing',
+    'AI app template pricing',
+    'SaaS starter kits pricing',
+    'Next.js boilerplates pricing',
+    'AI starter subscription',
+    'SaaS template plans'
+  ],
+  authors: [{ name: 'Pantaleone.net' }],
+  creator: 'Pantaleone.net',
+  publisher: 'Pantaleone.net',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://pantaleone-ai-saas-starter.vercel.app/pricing',
+    title: 'Pricing | AI SaaS Starter Kit & Next.js Boilerplates',
+    description: 'Affordable pricing plans for production-ready Next.js AI SaaS starter kits. Start free, scale with Professional and Enterprise plans—includes auth, payments & templates.',
+    siteName: 'Pantaleone AI SaaS Starter',
+    images: [
+      {
+        url: 'https://pantaleone-ai-saas-starter.vercel.app/og-image-pricing.jpg', // TODO: replace
+        width: 1200,
+        height: 630,
+        alt: 'AI SaaS Starter Pricing Plans',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Pricing | AI SaaS Starter Kit & Next.js Boilerplates',
+    description: 'Affordable pricing for production-ready AI SaaS starter kits. Start free & scale with auth, payments & templates.',
+    images: ['https://pantaleone-ai-saas-starter.vercel.app/og-image-pricing.jpg'], // TODO
+    creator: '@pantaleone_ai',
+  },
+  alternates: {
+    canonical: 'https://pantaleone-ai-saas-starter.vercel.app/pricing',
+  },
 };
 
 const plans = [

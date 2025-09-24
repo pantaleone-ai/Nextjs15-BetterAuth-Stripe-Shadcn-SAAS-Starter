@@ -1,13 +1,75 @@
 import Link from "next/link";
-import { 
-  ArrowRight, 
-  Shield, 
-  Zap, 
-  Database, 
+import { Metadata } from 'next';
+import {
+  ArrowRight,
+  Shield,
+  Zap,
+  Database,
   Paintbrush,    // Instead of Palette
-  Sparkles,      // Instead of Rocket  
-  Code2          // Instead of Code
+  Sparkles,      // Instead of Rocket
+  Code2,         // Instead of Code
+  MessageCircle,
+  Bot
 } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'AI SaaS Starter Kit: Next.js AI App Templates & Boilerplates for Startups',
+  description: 'Launch an AI SaaS starter kit built on Next.js to ship auth, subscriptions, and chat/RAG templates fast—production‑ready and developer‑first. Best AI starter kits 2025.',
+  keywords: [
+    'AI SaaS starter kit',
+    'Next.js AI starter kit',
+    'Next.js SaaS starter',
+    'AI app template',
+    'AI SaaS boilerplate',
+    'Next.js SaaS boilerplate',
+    'AI starter kit for startups',
+    'AI wrapper starter/template',
+    'Best AI starter kits',
+    'AI app templates (Vercel)',
+    'Next.js SaaS starter templates',
+    'AI boilerplates for startups'
+  ],
+  authors: [{ name: 'Pantaleone.net' }],
+  creator: 'Pantaleone.net',
+  publisher: 'Pantaleone.net',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://pantaleone-ai-saas-starter.vercel.app/',
+    title: 'AI SaaS Starter Kit: Next.js AI App Templates & Boilerplates for Startups',
+    description: 'Launch an AI SaaS starter kit built on Next.js to ship auth, subscriptions, and chat/RAG templates fast—production‑ready and developer‑first. Best AI starter kits 2025.',
+    siteName: 'Pantaleone AI SaaS Starter',
+    images: [
+      {
+        url: 'https://pantaleone-ai-saas-starter.vercel.app/og-image.jpg', // TODO: replace with actual image
+        width: 1200,
+        height: 630,
+        alt: 'AI SaaS Starter Kit Preview',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AI SaaS Starter Kit: Next.js AI App Templates & Boilerplates for Startups',
+    description: 'Launch an AI SaaS starter kit built on Next.js to ship auth, subscriptions, and chat/RAG templates fast—production‑ready and developer‑first.',
+    images: ['https://pantaleone-ai-saas-starter.vercel.app/og-image.jpg'], // TODO: replace
+    creator: '@pantaleone_ai',
+  },
+  alternates: {
+    canonical: 'https://pantaleone-ai-saas-starter.vercel.app/',
+  },
+};
 
 import { Button } from "@/components/ui/button";
 import {
@@ -106,142 +168,111 @@ export default function HomePage() {
     </StaggerContainer>
   </div>
 </section>
-
-<section className="w-full py-12 md:py-24 lg:py-32 bg-muted/30">
-  <div className="container mx-auto px-4 md:px-6">
+<section className="w-full py-12 bg-muted/30">
+  <div className="container mx-auto px-4">
     <div className="text-center mb-12">
-      <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl mb-4">
-        Everything You Need to Launch
-      </h2>
+      <h2 className="text-3xl font-bold sm:text-5xl mb-4">Everything You Need to Launch</h2>
       <p className="text-xl text-muted-foreground max-w-[700px] mx-auto">
-        Built with the latest technologies and best practices. Skip months of setup 
-        and focus on building your unique features.
+        Built with the latest technologies, this boilerplate helps you skip months of setup and focus on your unique features.
       </p>
     </div>
-    <div className="grid gap-6 lg:grid-cols-3 lg:gap-12">
+    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-7 lg:gap-12">
+      
       <Card variant="glass" className="text-center">
         <CardHeader>
-          <div className="w-12 h-12 gradient-primary rounded-xl flex items-center justify-center mx-auto mb-4">
+          <div className="gradient-primary rounded-xl w-12 h-12 flex items-center justify-center mx-auto mb-4">
             <Shield className="w-6 h-6 text-white" />
           </div>
           <CardTitle>Authentication & Security</CardTitle>
-          <CardDescription>
-            Complete auth system with social login and security best practices
-          </CardDescription>
+          <CardDescription>Social login and security best practices.</CardDescription>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-muted-foreground mb-3">
-            Better Auth integration with Google & GitHub OAuth, email/password, 
-            secure sessions, and password reset functionality.
-          </p>
-          <div className="text-xs text-muted-foreground/80">
-            ✓ Social login (Google, GitHub) • ✓ Email verification • ✓ Secure sessions
-          </div>
+          <p className="text-sm text-muted-foreground mb-3">Google & GitHub OAuth, email/password, secure sessions, and password reset.</p>
+          <div className="text-xs text-muted-foreground/80">✓ Social login ✓ Email verification ✓ Secure sessions</div>
         </CardContent>
       </Card>
       
       <Card variant="glass" className="text-center">
         <CardHeader>
-          <div className="w-12 h-12 gradient-primary rounded-xl flex items-center justify-center mx-auto mb-4">
+          <div className="gradient-primary rounded-xl w-12 h-12 flex items-center justify-center mx-auto mb-4">
             <Zap className="w-6 h-6 text-white" />
           </div>
           <CardTitle>Payments & Billing</CardTitle>
-          <CardDescription>
-            Stripe integration with subscriptions and customer portal
-          </CardDescription>
+          <CardDescription>Stripe integration with subscriptions.</CardDescription>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-muted-foreground mb-3">
-            Complete Stripe setup with pricing tables, checkout sessions, 
-            subscription management, and webhook handling.
-          </p>
-          <div className="text-xs text-muted-foreground/80">
-            ✓ Subscription billing • ✓ Customer portal • ✓ Webhook integration
-          </div>
+          <p className="text-sm text-muted-foreground mb-3">Pricing tables, checkout, subscription management, and webhooks.</p>
+          <div className="text-xs text-muted-foreground/80">✓ Subscription billing ✓ Customer portal ✓ Webhook integration</div>
         </CardContent>
       </Card>
       
       <Card variant="glass" className="text-center">
         <CardHeader>
-          <div className="w-12 h-12 gradient-primary rounded-xl flex items-center justify-center mx-auto mb-4">
+          <div className="gradient-primary rounded-xl w-12 h-12 flex items-center justify-center mx-auto mb-4">
             <Database className="w-6 h-6 text-white" />
           </div>
           <CardTitle>Database & Backend</CardTitle>
-          <CardDescription>
-            PostgreSQL with Drizzle ORM and type-safe queries
-          </CardDescription>
+          <CardDescription>PostgreSQL with Drizzle ORM.</CardDescription>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-muted-foreground mb-3">
-            Supabase PostgreSQL database with Drizzle ORM, migrations, 
-            and full TypeScript support for type-safe development.
-          </p>
-          <div className="text-xs text-muted-foreground/80">
-            ✓ PostgreSQL database • ✓ Drizzle ORM • ✓ Database migrations
-          </div>
+          <p className="text-sm text-muted-foreground mb-3">Supabase PostgreSQL with Drizzle ORM, migrations, and TypeScript support.</p>
+          <div className="text-xs text-muted-foreground/80">✓ PostgreSQL ✓ Drizzle ORM ✓ Migrations</div>
         </CardContent>
       </Card>
       
       <Card variant="glass" className="text-center">
         <CardHeader>
-          <div className="w-12 h-12 gradient-primary rounded-xl flex items-center justify-center mx-auto mb-4">
+          <div className="gradient-primary rounded-xl w-12 h-12 flex items-center justify-center mx-auto mb-4">
             <Paintbrush className="w-6 h-6 text-white" />
           </div>
           <CardTitle>Modern UI Components</CardTitle>
-          <CardDescription>
-            shadcn/ui components with persistent sidebar and responsive design
-          </CardDescription>
+          <CardDescription>shadcn/ui with responsive design.</CardDescription>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-muted-foreground mb-3">
-            Beautiful UI with shadcn/ui, Tailwind CSS, collapsible sidebar, 
-            dark/light mode, and mobile-responsive design.
-          </p>
-          <div className="text-xs text-muted-foreground/80">
-            ✓ shadcn/ui components • ✓ Persistent sidebar • ✓ Dark/light mode
-          </div>
+          <p className="text-sm text-muted-foreground mb-3">shadcn/ui, Tailwind CSS, collapsible sidebar, and dark/light mode.</p>
+          <div className="text-xs text-muted-foreground/80">✓ shadcn/ui ✓ Persistent sidebar ✓ Dark/light mode</div>
         </CardContent>
       </Card>
       
       <Card variant="glass" className="text-center">
         <CardHeader>
-          <div className="w-12 h-12 gradient-primary rounded-xl flex items-center justify-center mx-auto mb-4">
+          <div className="gradient-primary rounded-xl w-12 h-12 flex items-center justify-center mx-auto mb-4">
             <Sparkles className="w-6 h-6 text-white" />
           </div>
           <CardTitle>Next.js 15 & Performance</CardTitle>
-          <CardDescription>
-            Latest Next.js with Turbopack, Server Components, and optimizations
-          </CardDescription>
+          <CardDescription>Latest Next.js with optimizations.</CardDescription>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-muted-foreground mb-3">
-            Built on Next.js 15 with App Router, Server Components, Turbopack dev mode, 
-            and Google Analytics 4 integration.
-          </p>
-          <div className="text-xs text-muted-foreground/80">
-            ✓ Next.js 15 App Router • ✓ Turbopack dev • ✓ Google Analytics
-          </div>
+          <p className="text-sm text-muted-foreground mb-3">Next.js 15 with App Router, Server Components, and Turbopack.</p>
+          <div className="text-xs text-muted-foreground/80">✓ Next.js 15 ✓ Turbopack ✓ Google Analytics</div>
         </CardContent>
       </Card>
       
       <Card variant="glass" className="text-center">
         <CardHeader>
-          <div className="w-12 h-12 gradient-primary rounded-xl flex items-center justify-center mx-auto mb-4">
+          <div className="gradient-primary rounded-xl w-12 h-12 flex items-center justify-center mx-auto mb-4">
             <Code2 className="w-6 h-6 text-white" />
           </div>
           <CardTitle>Developer Experience</CardTitle>
-          <CardDescription>
-            TypeScript, ESLint, and development tools for productivity
-          </CardDescription>
+          <CardDescription>TypeScript, ESLint, and productivity tools.</CardDescription>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-muted-foreground mb-3">
-            Full TypeScript setup with ESLint, type safety, MDX support, 
-            and automated sitemap generation for SEO.
-          </p>
-          <div className="text-xs text-muted-foreground/80">
-            ✓ Full TypeScript • ✓ ESLint config • ✓ MDX support • ✓ SEO ready
+          <p className="text-sm text-muted-foreground mb-3">TypeScript, ESLint, MDX support, and automated sitemap generation.</p>
+          <div className="text-xs text-muted-foreground/80">✓ TypeScript ✓ ESLint ✓ MDX support ✓ SEO ready</div>
+        </CardContent>
+      </Card>
+
+      <Card variant="glass" className="text-center">
+        <CardHeader>
+          <div className="gradient-primary rounded-xl w-12 h-12 flex items-center justify-center mx-auto mb-4">
+            <Bot className="w-6 h-6 text-white" />
           </div>
+          <CardTitle>AI Chat Interface</CardTitle>
+          <CardDescription>GPT-4 streaming with file attachments.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p className="text-sm text-muted-foreground mb-3">AI chat with streaming responses, mobile UI, and file processing.</p>
+          <div className="text-xs text-muted-foreground/80">✓ GPT-4 ✓ Streaming ✓ File attachments ✓ Mobile responsive</div>
         </CardContent>
       </Card>
     </div>

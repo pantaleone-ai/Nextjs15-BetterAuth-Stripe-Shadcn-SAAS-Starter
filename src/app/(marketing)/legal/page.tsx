@@ -1,9 +1,59 @@
 import Link from "next/link";
+import { Metadata } from 'next';
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 
-export const metadata = {
-  title: "Legal - Terms of Service & Privacy Policy",
-  description: "Terms of Service, Privacy Policy, and legal information for our SaaS platform",
+export const metadata: Metadata = {
+  title: 'Legal | Terms of Service & Privacy Policy - AI SaaS Starter Kit',
+  description: 'Terms of Service and Privacy Policy for Pantaleone AI SaaS starter kit. Learn about our legal framework, data protection, and user rights for production-ready Next.js AI app templates.',
+  keywords: [
+    'AI SaaS legal',
+    'Next.js SaaS terms',
+    'AI app privacy',
+    'SaaS starter terms of service',
+    'AI boilerplate legal',
+    'SaaS template privacy policy',
+    'pantaleone AI legal'
+  ],
+  authors: [{ name: 'Pantaleone.net' }],
+  creator: 'Pantaleone.net',
+  publisher: 'Pantaleone.net',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://pantaleone-ai-saas-starter.vercel.app/legal',
+    title: 'Legal | Terms of Service & Privacy Policy - AI SaaS Starter Kit',
+    description: 'Terms of Service and Privacy Policy for Pantaleone AI SaaS starter kit. Learn about our legal framework, data protection, and user rights for production-ready Next.js AI app templates.',
+    siteName: 'Pantaleone AI SaaS Starter',
+    images: [
+      {
+        url: 'https://pantaleone-ai-saas-starter.vercel.app/og-image-legal.jpg', // TODO: replace
+        width: 1200,
+        height: 630,
+        alt: 'AI SaaS Starter Legal Documentation',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Legal | Terms of Service & Privacy Policy - AI SaaS Starter Kit',
+    description: 'Terms of Service and Privacy Policy for Pantaleone AI SaaS starter kit. Learn about our legal framework and user rights.',
+    images: ['https://pantaleone-ai-saas-starter.vercel.app/og-image-legal.jpg'], // TODO
+    creator: '@pantaleone_ai',
+  },
+  alternates: {
+    canonical: 'https://pantaleone-ai-saas-starter.vercel.app/legal',
+  },
 };
 
 export default function LegalPage() {
