@@ -32,13 +32,13 @@ import {
 // This is sample data.
 const sampleData = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
+    name: "pantaleone-ai",
+    email: "mdptrading@gmail.com",
     avatar: "/avatars/shadcn.jpg",
   },
   teams: [
     {
-      name: "Acme Inc",
+      name: "Pantaleone AI",
       logo: GalleryVerticalEnd,
       plan: "Enterprise",
     },
