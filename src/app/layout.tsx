@@ -6,7 +6,9 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Toaster } from "@/components/ui/toast";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { ChatEntryPoint } from "@/components/chat-entrypoint";
+import dynamic from 'next/dynamic';
+
+const DynamicChatEntryPoint = dynamic(() => import('@/components/chat-entrypoint').then(mod => ({ default: mod.ChatEntryPoint })));
 export const metadata: Metadata = {
   title: {
     default: "AI SaaS Starter Kit | Next.js AI App Templates & Boilerplates",
@@ -77,9 +79,9 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           {children}
           <Toaster />
-          <ChatEntryPoint />
+          <DynamicChatEntryPoint />
         </ThemeProvider>
-        <GoogleAnalytics gaId={process.env.GA_MEASUREMENT_ID} />
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
       </body>
     </html>
   );

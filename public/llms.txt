@@ -1,0 +1,9 @@
+# saas-start-ai.vercel.app llms.txt
+
+- [Modern SaaS Starter Template](https://saas-start-ai.vercel.app): Provide a modern Next.js SaaS starter template with authentication, payments, database, UI, and AI chat features.
+- [SaaS Pricing Plans](https://saas-start-ai.vercel.app/pricing): Display SaaS product pricing plans and features for different user needs.
+- [AI Chat Platform](https://saas-start-ai.vercel.app/chat): Provide an AI chat platform with subscription plans for users to communicate and access services.
+- [Account Sign-In](https://saas-start-ai.vercel.app/sign-in): Allow users to securely sign in to their account via email or social media.
+- [Account Registration](https://saas-start-ai.vercel.app/sign-up): Register for a new account using email, password, or social media login options.
+- [Development Blog](https://saas-start-ai.vercel.app/blog): Share tutorials, insights, and updates on modern web development and company news.
+- [User Dashboard](https://saas-start-ai.vercel.app/dashboard): Provide user access to account dashboard, app management, and subscription plans.
