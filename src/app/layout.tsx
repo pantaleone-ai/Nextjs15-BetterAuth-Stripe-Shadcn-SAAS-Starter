@@ -9,9 +9,10 @@ const inter = Inter({
   variable: '--font-inter',
   display: 'swap',
 })
-import "@/styles/globals.css";
+import "@theme/styles/globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/ui/theme-provider";
+import { AnnouncementBanner } from "@/components/ui/announcement-banner";
 import { Toaster } from "@/components/ui/toast";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import dynamic from 'next/dynamic';
@@ -85,6 +86,10 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <AnnouncementBanner
+            message="🚀 Welcome to our new site! Check out the latest features."
+            href="/features"
+          />
           {children}
           <Toaster />
           <DynamicChatEntryPoint />

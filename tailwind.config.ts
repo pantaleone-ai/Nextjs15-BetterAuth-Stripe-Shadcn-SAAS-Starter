@@ -1,6 +1,9 @@
 import type { Config } from 'tailwindcss'
 
+const theme = process.env.THEME || 'base'
+
 const config: Config = {
+  presets: [require(`./themes/${theme}/tailwind.config.js`)],
   darkMode: ['class', 'class'],  // String format for v3 (not array)
   content: [
     './src/**/*.{js,ts,jsx,tsx,mdx}',

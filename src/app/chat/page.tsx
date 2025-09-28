@@ -1,9 +1,10 @@
 'use client'
 
 import { useState, FormEvent } from 'react'
-import { ChatUI } from '@/components/chat-ui'
-import { AppSidebar } from '@/components/app-sidebar'
-import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar'
+
+// Disable static optimization completely for this chat page
+export const dynamic = 'force-dynamic'
+import { ChatUI } from '@theme/components/chat-ui'
 
 type Message = {
   id: string
@@ -68,18 +69,13 @@ export default function ChatPage() {
   }
 
   return (
-    <SidebarProvider>
-      <AppSidebar />
-      <SidebarInset>
-        <ChatUI
-          messages={messages}
-          input={input}
-          handleInputChange={handleInputChange}
-          handleSubmit={handleSubmit}
-          isLoading={isLoading}
-          error={error}
-        />
-      </SidebarInset>
-    </SidebarProvider>
+    <ChatUI
+      messages={messages}
+      input={input}
+      handleInputChange={handleInputChange}
+      handleSubmit={handleSubmit}
+      isLoading={isLoading}
+      error={error}
+    />
   )
 }
