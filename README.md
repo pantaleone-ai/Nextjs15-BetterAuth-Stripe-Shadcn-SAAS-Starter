@@ -1,3 +1,5 @@
+[![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4-red?style=flat-square)](https://github.com/sponsors/pantaleone-ai)
+
 # Pantaleone AI SaaS Starter
 
 A comprehensive SaaS starter template built with Next.js 15, designed to accelerate the development of AI-powered SaaS applications with modern best practices and scalable architecture.
