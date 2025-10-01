@@ -16,7 +16,7 @@ interface AnnouncementBannerProps {
 export function AnnouncementBanner({
   message,
   href,
-  ctaText = "Get Started",
+  ctaText = "$49 For Life",
   ctaHref = "/pricing",
 }: AnnouncementBannerProps) {
   const [isVisible, setIsVisible] = useState(false);
@@ -42,12 +42,12 @@ export function AnnouncementBanner({
           animate={{ y: 0 }}
           exit={{ y: -100 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="w-full bg-blue-600 text-white py-3 px-4 relative z-50"
+          className="w-full bg-blue-600 text-white leading-tight py-2 text-rg relative z-50"
         >
-          <div className="container mx-auto flex items-center justify-between gap-4">
+          <div className="container mx-auto flex items-center justify-between gap-4 lg:px-4 md:px-0">
             {/* Message and CTA Button */}
-            <div className="flex-1 flex items-center gap-4 min-w-0">
-              <div className="flex-1 text-center md:text-left">
+            <div className="flex-1 flex items-center gap-2 px-1 min-w-0">
+              <div className="flex-1 text-center  lg:text-left">
                 {href ? (
                   <Link
                     href={href}
@@ -61,9 +61,9 @@ export function AnnouncementBanner({
               </div>
               {ctaHref && (
                 <Button
-                  size="sm"
+                  size="default"
                   variant="secondary"
-                  className="bg-white text-blue-600 hover:bg-gray-100 whitespace-nowrap"
+                  className="bg-white text-blue-600 font-black hover:bg-gray-100 whitespace-nowrap"
                   asChild
                 >
                   <Link href={ctaHref}>

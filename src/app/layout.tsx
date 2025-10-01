@@ -87,8 +87,7 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <AnnouncementBanner
-            message="🚀 Welcome to our new site! Check out the latest features."
-            href="/features"
+            message="LIFETIME access to premium themes!"
           />
           {children}
           <Toaster />
