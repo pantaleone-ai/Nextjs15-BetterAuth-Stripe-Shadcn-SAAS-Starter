@@ -1,7 +1,9 @@
+# *
 User-agent: *
 Allow: /
-Disallow: /api/
-Disallow: /admin/
-Disallow: /dashboard/
 
+# Host
+Host: https://pantaleone-ai-saas-starter.vercel.app
+
+# Sitemaps
 Sitemap: https://pantaleone-ai-saas-starter.vercel.app/sitemap.xml

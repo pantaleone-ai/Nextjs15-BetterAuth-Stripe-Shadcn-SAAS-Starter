@@ -12,8 +12,9 @@
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",
     "db:push": "drizzle-kit push",
-    "build:prod": "next build",
-    "analyze": "ANALYZE=true next build"
+    "build:prod": "next build && next-sitemap",
+    "analyze": "ANALYZE=true next build",
+    "postbuild": "node next-sitemap.config.js"
   },
   "dependencies": {
     "@ai-sdk/openai": "^2.0.34",
@@ -56,6 +57,7 @@
     "next": "^15.5.0",
     "next-mdx-remote": "^5.0.0",
     "next-seo": "^6.6.0",
+    "next-sitemap": "^4.2.3",
     "next-themes": "^0.4.6",
     "postgres": "^3.4.5",
     "react": "^19.1.0",

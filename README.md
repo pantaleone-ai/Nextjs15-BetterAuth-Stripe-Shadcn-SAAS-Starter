@@ -52,6 +52,7 @@ This starter provides a complete foundation for building AI-powered SaaS applica
 - **MDX Support** for rich content
 - **Blog System** with automatic routing
 - **SEO Optimization** with next-sitemap
+- **LLM-friendly indexing** with llms.txt
 - **Dynamic Metadata** generation
 
 ### 📊 Analytics & Performance
@@ -549,6 +550,47 @@ export const trackEvent = (eventName: string, properties?: Record<string, any>) 
   // Analytics.track(eventName, properties)
 }
 ```
+
+#### Sitemap Configuration
+
+The template includes Next.js sitemap generation with customizable settings. Update `next-sitemap.config.js` to modify URLs, priorities, and change frequencies:
+
+```typescript
+// next-sitemap.config.js
+const siteUrl = process.env.SITE_URL || 'https://your-saas-name.com'
+
+module.exports = {
+  siteUrl,
+  changefreq: 'weekly', // default changefreq
+  priority: 0.7,        // default priority
+  sitemapSize: 5000,    // split sitemap into multiple files if needed
+  generateRobotsTxt: true, // generate robots.txt
+  // Exclude certain routes
+  exclude: ['/private/*', '/admin/*'],
+  // Add additional paths
+  additionalPaths: async (config) => {
+    const result = []
+    // Add dynamic paths here
+    return result
+  }
+}
+```
+
+#### LLM Indexing (llms.txt)
+
+The project includes `public/llms.txt` for large language model indexing. This file provides structured information about your site for better AI crawler discoverability:
+
+```txt
+# your-saas-name.com llms.txt
+
+- [Your SaaS Name](https://your-saas-name.com): Description of your main product
+- [Features](https://your-saas-name.com/features): List of key features
+- [Pricing](https://your-saas-name.com/pricing): Subscription plans and pricing
+- [AI Chat](https://your-saas-name.com/chat): AI-powered chat functionality
+- [Blog](https://your-saas-name.com/blog): Technical articles and updates
+```
+
+To customize llms.txt, edit `public/llms.txt` with your site's specific URLs and descriptions, keeping each line as a markdown-style link with a brief description of the page's purpose.
 
 ## 🚀 Deployment Guide
 
